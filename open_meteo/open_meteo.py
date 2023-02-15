@@ -46,7 +46,7 @@ def save_data(df_list: list[pd.DataFrame], directory: str = 'data'):
         os.makedirs(path)
     for df in df_list:
         filename = str(df.name)
-        df.to_csv(f"{path}/{df.name}")
+        df.to_csv(f"{path}/{df.name}.csv")
 
 if __name__ == "__main__":
     nyc_coordinates = (40.7128, 74.0060, 'NYC')
