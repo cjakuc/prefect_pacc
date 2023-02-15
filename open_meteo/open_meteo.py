@@ -1,7 +1,6 @@
-import httpx
 from prefect import flow, task
 import pandas as pd
-import os, requests, json
+import os
 from openmeteo_py import Hourly, Daily, Options, OWmanager
 
 @flow
@@ -9,7 +8,7 @@ def run_pipeline(coordinates: list[tuple]):
     dict_list = retrieve_data(coordinates)
     df_list = process_data(dict_list)
     save_data(df_list)
-    print("Flow complete")
+    # print("Flow complete")
 
 @task
 def retrieve_data(coordinates: list[tuple]) -> list[dict]:
