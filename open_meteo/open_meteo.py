@@ -42,11 +42,12 @@ def process_data(dict_list: list[pd.DataFrame]) -> list[pd.DataFrame]:
 @task
 def save_data(df_list: list[pd.DataFrame], directory: str = 'data'):
     cwd = os.getcwd()
-    if not os.path.isdir(f"{cwd}/{directory}"):
-        os.makedirs(f"{cwd}/{directory}")
+    path = f"{cwd}/{directory}/weather"
+    if not os.path.isdir(path):
+        os.makedirs(path)
     for df in df_list:
         filename = str(df.name)
-        df.to_csv(f"{cwd}/{directory}/{df.name}")
+        df.to_csv(f"{path}/{df.name}")
 
 if __name__ == "__main__":
     nyc_coordinates = (40.7128, 74.0060, 'NYC')
