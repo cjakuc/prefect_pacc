@@ -1,4 +1,4 @@
-from open_meteo_lab.open_meteo import run_pipeline
+from open_meteo import run_pipeline
 from prefect.deployments import Deployment
 from prefect.orion.schemas.schedules import RRuleSchedule, CronSchedule
 from prefect.filesystems import GitHub
