@@ -3,8 +3,19 @@ import pandas as pd
 import os
 from openmeteo_py import Hourly, Daily, Options, OWmanager
 
+# default args for run_pipeline to make deployment simpler at first
+nyc_coordinates = (40.7128, 74.0060, 'NYC')
+sg_coordinates = (40.1321, 74.0346, 'Sea Girt')
+bld_coordinates = (40.0150, 105.2705, 'Boulder')
+elika_coordinates = (36.222, 22.9223, 'Elika')
+coordinates = [nyc_coordinates,
+                sg_coordinates,
+                bld_coordinates,
+                elika_coordinates
+                ]
+
 @flow
-def run_pipeline(coordinates: list[tuple]):
+def run_pipeline(coordinates: list[tuple] = coordinates):
     dict_list = retrieve_data(coordinates)
     df_list = process_data(dict_list)
     save_data(df_list)
@@ -53,6 +64,11 @@ if __name__ == "__main__":
     sg_coordinates = (40.1321, 74.0346, 'Sea Girt')
     bld_coordinates = (40.0150, 105.2705, 'Boulder')
     elika_coordinates = (36.222, 22.9223, 'Elika')
+    # TODO: use these coordinates after city name is retrieved with geopy
+    # nyc_coordinates = (40.7128, 74.0060)
+    # sg_coordinates = (40.1321, 74.0346)
+    # bld_coordinates = (40.0150, 105.2705)
+    # elika_coordinates = (36.222, 22.9223)
     coordinates = [nyc_coordinates,
                     sg_coordinates,
                     bld_coordinates,
