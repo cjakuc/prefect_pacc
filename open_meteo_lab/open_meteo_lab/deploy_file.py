@@ -8,7 +8,7 @@ github_block = GitHub.load("github-access")
 rr = RRuleSchedule(rrule="FREQ=MINUTELY;INTERVAL=1;COUNT=4")
 deployment = Deployment.build_from_flow(
     flow=run_pipeline,
-    name="RRule scheduled Python deployment",
+    name="RRule scheduled Python deployment via GitHub",
     parameters={'coordinates':[(40.7128, 74.0060, 'NYC')]},
     schedule=rr,
     storage=github_block
