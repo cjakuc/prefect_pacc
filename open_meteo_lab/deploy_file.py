@@ -10,7 +10,7 @@ docker_container_block = DockerContainer.load("open-meteo-container")
 rr = RRuleSchedule(rrule="FREQ=MINUTELY;INTERVAL=1;COUNT=4")
 deployment = Deployment.build_from_flow(
     flow=run_pipeline,
-    name="RRule scheduled Python deployment via GitHub w/ container infrastructure",
+    name="RRule scheduled Python deployment via GitHub with container infrastructure",
     parameters={'coordinates':[(40.7128, 74.0060, 'NYC')]},
     schedule=rr,
     storage=github_block,
